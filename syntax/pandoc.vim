@@ -38,7 +38,7 @@ syn match pandocLatex /\$.\{-}\$/ contains=@LATEX
 
 
 if !exists("g:pandoc_no_spans") || !g:pandoc_no_spans
-syn match pandocPara /\(^\(=\|[-:#%>]\|\[.\{-}\]:\)\@!\(\S.*\)\n\)\(\(^[=-].*\n\)\|\(^[:].*\n\)\)\@!/ contains=pandocEmphasis,pandocStrong,pandocNoFormatted,pandocSuperscript,pandocSubscript,pandocStrikeout,pandocLinkArea,pandocFootnoteID,@Spell,pandocPCite
+syn match pandocPara /\(^\(=\|[-:#%>]\|\[.\{-}\]:\)\@!\(\S.*\)\n\)\(\(^[=-].*\n\)\|\(^[:].*\n\)\)\@!/ contains=pandocLatex,pandocEmphasis,pandocStrong,pandocNoFormatted,pandocSuperscript,pandocSubscript,pandocStrikeout,pandocLinkArea,pandocFootnoteID,@Spell,pandocPCite
 endif
 
 syn match pandocTitleBlock /\%^\(%.*\n\)\{1,3}$/ skipnl
@@ -121,6 +121,8 @@ syn match pandocFootnoteID /\[\^.\{-}\]/ contained containedin=pandocFootnoteBlo
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " Citations:
+" latex citations
+syn match pandocPCite /\\cite{.\{-}}/ contains=pandocEmphasis,pandocStrong,pandocLatex,@Spell
 " parenthetical citations
 syn match pandocPCite /\[-\{0,1}@.\{-}\]/ contains=pandocEmphasis,pandocStrong,pandocLatex,@Spell
 " syn match pandocPCite /\[\w.\{-}\s-\?.\{-}\]/ contains=pandocEmphasis,pandocStrong
